@@ -1,0 +1,3 @@
+"""
+configuracion general
+"""
