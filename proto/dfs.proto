@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package dfs;
+
+// Código de error para manejar respuestas
+enum ErrorCode {
+  NONE = 0; // Sin error
+  NOT_FOUND = 1; // Bloque no encontrado
+  INVALID_DATA = 2; // Datos inválidos
+}
+
+// Solicitud para almacenar un bloque
+message StoreBlockRequest {
+  string block_id = 1;  // ID del bloque
+  bytes data = 2;       // Datos del bloque
+}
+
+// Respuesta para almacenar un bloque
+message StoreBlockResponse {
+  bool success = 1;      // Indica si el almacenamiento fue exitoso
+  ErrorCode error_code = 2; // Código de error si es necesario
+  string message = 3;    // Mensaje adicional
+}
+
+// Solicitud para recuperar un bloque
+message RetrieveBlockRequest {
+  string block_id = 1;  // ID del bloque a recuperar
+}
+
+// Respuesta para recuperar un bloque
+message RetrieveBlockResponse {
+  bool success = 1;      // Indica si la recuperación fue exitosa
+  bytes data = 2;        // Datos del bloque recuperado
+  ErrorCode error_code = 3; // Código de error si es necesario
+  string message = 4;    // Mensaje adicional
+}
+
+// Servicio para el DataNode
+service DataNode {
+  rpc StoreBlock(StoreBlockRequest) returns (StoreBlockResponse);  // Almacenar un bloque
+  rpc RetrieveBlock(RetrieveBlockRequest) returns (RetrieveBlockResponse);  // Recuperar un bloque
+}

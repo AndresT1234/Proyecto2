@@ -1,0 +1,19 @@
+-------------------------------
+----INSTALACIONES PREVIAS----
+
+flask
+Flask-RESTful
+grpcio
+grpcio-tools
+requests
+
+
+
+------------------------------------
+comandos de ejecucion --IMPORTANTE--
+
+1. python Namenode/namenode.py
+
+2. python -m Datanode.datanode
+
+3. python -m cliente.cli   
