@@ -1,5 +1,0 @@
-NAME_NODE_HOST = "localhost"
-NAME_NODE_PORT = 5000
-DATA_NODE_PORT_START = 50051  # Puerto base para los DataNodes
-BLOCK_SIZE = 1024 * 1024  # 1 MB
-REPLICATION_FACTOR = 3

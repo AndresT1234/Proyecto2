@@ -1,9 +1,15 @@
-class AuthManager:
-    def __init__(self):
-        self.users = {
-            'carlossanabria': '1234',
-            'johancholes': '0000'
-        }
-        
-    def authenticate(self, username, password):
-        return self.users.get(username) == password
+import getpass
+
+def obtener_credenciales():
+    usuario = input("Usuario: ")
+    contraseña = getpass.getpass("Contraseña: ")
+    return usuario, contraseña
+
+def autenticar(usuario, contraseña):
+    usuarios_permitidos = {"admin": "1234"}
+    if usuario in usuarios_permitidos and usuarios_permitidos[usuario] == contraseña:
+        print("\nAutenticación exitosa.\n")
+        return True
+    else:
+        print("Error: Usuario o contraseña incorrectos.")
+        return False

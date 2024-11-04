@@ -1,4 +1,3 @@
-# configuracioncliente.py
-class Config:
-    DATANODE_URL = 'localhost:50051'  
-    BASE_URL = 'http://127.0.0.1:5000' 
+# Configuración específica del cliente
+CLIENT_ID = "cliente_1"
+DEFAULT_DIRECTORY = "./client_files"  # Directorio local donde se guardan/recuperan archivos

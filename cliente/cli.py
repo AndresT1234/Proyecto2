@@ -3,7 +3,9 @@ import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'cliente'))
 
+import autenticador
 from file_manager import FileManager
+from configuracioncliente import CLIENT_ID, DEFAULT_DIRECTORY 
 
 def help():
     print("Comandos disponibles:")
@@ -18,15 +20,19 @@ def help():
     print(" help            - Mostrar esta ayuda.")
 
 def main():
-    file_manager = FileManager()
-
-    # Autenticación (opcional)
-    user = input("Usuario: ")
-    password = input("Contraseña: ")
-
-    if not file_manager.authenticate(user, password):
-        print("Autenticación fallida.")
+    # Autenticación del usuario
+    usuario, contraseña = autenticador.obtener_credenciales()
+    if not autenticador.autenticar(usuario, contraseña):
+        print("Error: Autenticación fallida.")
         return
+
+    file_manager = FileManager(usuario, contraseña) 
+
+    print(f"Bienvenido al Sistema de Archivos Distribuido como {CLIENT_ID}. \n")
+    
+    # Crear el directorio por defecto si no existe
+    if not os.path.exists(DEFAULT_DIRECTORY):
+        os.makedirs(DEFAULT_DIRECTORY)
 
     # Bucle principal del cliente
     while True:
@@ -60,6 +66,8 @@ def main():
                 print("escriba help -> para ver comandos.")
         except Exception as e:
             print(f"Error: {str(e)}")
+            
 
 if __name__ == "__main__":
     main()
+

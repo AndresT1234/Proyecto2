@@ -12,6 +12,8 @@ requests
 ------------------------------------
 comandos de ejecucion --IMPORTANTE--
 
+--secuencial--
+
 1. python Namenode/namenode.py
 
 2. python -m Datanode.datanode

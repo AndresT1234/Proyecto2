@@ -31,7 +31,7 @@ message RetrieveBlockRequest {
 message RetrieveBlockResponse {
   bool success = 1;      // Indica si la recuperación fue exitosa
   bytes data = 2;        // Datos del bloque recuperado
-  ErrorCode error_code = 3; // Código de error si es necesario
+  ErrorCode error_code = 3; // Código de error
   string message = 4;    // Mensaje adicional
 }
 
